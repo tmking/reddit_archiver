@@ -1,0 +1,3 @@
+username: myusername
+password: myawesomesecurepassword
+directory: defaults_to_your_username_if_ommitted

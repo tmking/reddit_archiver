@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby -Ilib
+
+require 'reddit_archiver'
+
+account = RedditArchiver::Account.new
+
+print "Retrieving posts:"
+posts = (account.submissions | account.comments)
+print " done with #{posts.count} items.\n"
+
+posts.each do |post|
+  print "Generating #{post.filename}:"
+  post.write
+  print " done.\n"
+end
