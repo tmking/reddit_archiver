@@ -14,8 +14,11 @@ describe RedditArchiver::Account do
     allow(Snoo::Client).to receive(:new).and_return(connection)
   end
 
-  it "retreives the posts three times" do
-    expect(connection).to receive(:get_user_listing).exactly(3).times
-    account.comments
+  it "can retreive comments" do
+    expect(account.comments.first).to have_class(RedditArchiver::Comment)
+  end
+
+  it "can retrieve submissions" do
+    expect(account.submissions.first).to have_class(RedditArchiver::Submission)
   end
 end

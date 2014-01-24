@@ -21,21 +21,20 @@ module RedditArchiver
 
     private
 
-    def posts(type)
+    def posts(type, reddit_id = nil)
       # Reddit's API only allows a maximum of 100 comments at a time.
       # To retrieve more than that (up to the hard limit of 1k), we
       # have to get the 'name' attribute of the last comment and then
       # request the next collection of comments that occur after it.
-      posts = retrieve_posts(type: type.to_s)
-      current_name = ""
 
-      begin
-        previous_name = current_name
-        current_name = posts.last["name"]
-        posts += retrieve_posts(type: type.to_s, after: current_name)
-      end until previous_name == current_name
+      retrieved_posts = retrieve_posts(type: type.to_s, after: reddit_id)
 
-      posts
+      if retrieved_posts.empty?
+        return retrieved_posts
+      else
+        last_id = retrieved_posts.last["name"]
+        retrieved_posts += posts(type, last_id)
+      end
     end
 
     def retrieve_posts(args = {})
