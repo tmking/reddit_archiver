@@ -6,11 +6,11 @@ describe RedditArchiver::Comment do
   subject { RedditArchiver::Comment.new(post) }
 
   its(:year_month_date) { should eq("2013-09-19_00-29-37") }
-  its(:filename) { should eq('2013-09-19_00-29-37_hello') }
+  its(:filename) { should eq('2013-09-19_00-29-37_test-test-test-t1_cccccc') }
   its(:body) { should eq('Hello.') }
   its(:score) { should eq(3) }
   its(:subdirectory) { should eq('comments') }
-  its(:title) { should eq('Hello.') }
+  its(:title) { should eq('test-test-test-t1_cccccc') }
 
   context "The file" do
     let(:comment) { RedditArchiver::Comment.new(post) }

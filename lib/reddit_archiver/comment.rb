@@ -1,6 +1,6 @@
 module RedditArchiver
   class Comment < Post
-    attr_reader :body, :score, :link_title, :link_id, :link_author
+    attr_reader :subreddit, :body, :score, :link_title, :link_id, :link_author
 
     def initialize(comment)
       @body = comment["body"]
@@ -16,7 +16,7 @@ module RedditArchiver
     end
 
     def title
-      body[0..96]
+      "#{submission_title}-#{reddit_id}"
     end
 
     def submission_title

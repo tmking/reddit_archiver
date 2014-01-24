@@ -6,7 +6,7 @@ module RedditArchiver
     end
 
     def subdirectories
-      self.submission_title ? File.join(subdirectory, self.submission_title) : subdirectory
+      self.subreddit ? File.join(subdirectory, self.subreddit) : subdirectory
     end
 
     def filename
