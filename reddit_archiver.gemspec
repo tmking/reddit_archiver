@@ -23,6 +23,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 2.14.1"
   spec.add_development_dependency "webmock", "~> 1.17.1"
   spec.add_runtime_dependency     "snoo", "~> 0.1.2"
-  spec.add_runtime_dependency     "activesupport", "~> 4.0.2"
+  spec.add_runtime_dependency     "activesupport", "~> 4.1.0"
   spec.add_runtime_dependency     "htmlentities", "~> 4.3.1"
 end
